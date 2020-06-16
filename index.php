@@ -503,11 +503,13 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                 $aksi = $_GET['aksi'];
 
                 if ($page == "barang") {
-                    if ($aksi == "") {
+                    if ($aksi == "") { // JIKA AKSI == kosong, jalankan di bawah
                         include "pages/barang/barang.php";
                     }
+                    if ($aksi == "tambah") { // JIKA AKSI == tambah, jalankan di bawah
+                        include "pages/barang/tambah.php";
+                    }
                 }
-
                 if ($page == "pelanggan") {
                     if ($aksi == "") {
                         include "pages/pelanggan/pelanggan.php";

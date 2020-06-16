@@ -37,7 +37,7 @@
                                     <td><?php echo $data['stok']; ?></td>
                                     <td><?php echo $data['kepemilikan']; ?></td>
                                     <td>
-                                        <a class="btn btn-primary" href="">Ubah</a>
+                                        <a class="btn btn-success" href="">Ubah</a>
                                         <a class="btn btn-danger" href="">Hapus</a>
                                     </td>
                                 </tr>
@@ -46,7 +46,8 @@
                         </tbody>
                     </table>
                 </div>
+                <a class="btn btn-primary" href="?pages=barang&aksi=tambah">
+                    <i class="material-icons">add</i>
+                    Tambah Baru
+                </a>
             </div>
-        </div>
-    </div>
-</div>
