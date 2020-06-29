@@ -39,7 +39,7 @@
                                     <td><?php echo $data['deskripsi']; ?></td>
                                     <td>
                                         <a href="?page=barang&aksi=ubah&id=<?php echo $data['kode_barcode'] ?>" class="btn btn-success">Ubah</a>
-                                        <a href="?page=barang&aksi=hapus&id=<?php echo $data['kode_barcode'] ?>" class="btn btn-warning">Hapus</a>
+                                        <a onclick="return confirm('Apakah Anda Yakin akan Menghapus Data ini...?')" href="?page=barang&aksi=hapus&id=<?php echo $data['kode_barcode'] ?>" class="btn btn-danger">Hapus</a>
                                     </td>
                                 </tr>
 

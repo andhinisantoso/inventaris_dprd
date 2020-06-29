@@ -505,6 +505,9 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                     if ($aksi == "ubah") {
                         include "pages/barang/ubah.php";
                     }
+                    if ($aksi == "hapus") {
+                        include "pages/barang/hapus.php";
+                    }
                 }
                 if ($page == 'pelanggan') {
                     if ($aksi == "") {
