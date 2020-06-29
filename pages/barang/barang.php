@@ -12,23 +12,23 @@
                         <thead>
                             <tr>
                                 <th>No.</th>
-                                <th>Kode Barcode</th>
+                                <th>Kode Barang</th>
                                 <th>Nama Barang</th>
                                 <th>Satuan</th>
                                 <th>Stok</th>
-                                <th>Kepemilikan</th>
+                                <th>Klien</th>
+                                <th>Deskripsi</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
 
+                        <tbody>
                             <?php
                             $no = 1;
                             $sql = $koneksi->query("select * from tb_barang");
                             while ($data = $sql->fetch_assoc()) {
-
-
                             ?>
+
                                 <tr>
                                     <td><?php echo $no++; ?></td>
                                     <td><?php echo $data['kode_barcode']; ?></td>
@@ -36,18 +36,18 @@
                                     <td><?php echo $data['satuan']; ?></td>
                                     <td><?php echo $data['stok']; ?></td>
                                     <td><?php echo $data['kepemilikan']; ?></td>
+                                    <td><?php echo $data['deskripsi']; ?></td>
                                     <td>
-                                        <a class="btn btn-success" href="">Ubah</a>
-                                        <a class="btn btn-danger" href="">Hapus</a>
+                                        <a href="?page=barang&aksi=ubah&id=<?php echo $data['kode_barcode'] ?>" class="btn btn-success">Ubah</a>
+                                        <a href="?page=barang&aksi=hapus&id=<?php echo $data['kode_barcode'] ?>" class="btn btn-warning">Hapus</a>
                                     </td>
                                 </tr>
-                            <?php } ?>
 
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
-                <a class="btn btn-primary" href="?pages=barang&aksi=tambah">
-                    <i class="material-icons">add</i>
-                    Tambah Baru
-                </a>
+                <a href="?page=barang&aksi=tambah" class="btn btn-primary">Tambah</a>
             </div>

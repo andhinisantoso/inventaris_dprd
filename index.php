@@ -1,6 +1,6 @@
 <?php
-
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+
 $koneksi = new mysqli("localhost", "root", "", "inventaris");
 
 ?>
@@ -13,7 +13,7 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>Blank Page | Bootstrap Based Admin Template - Material Design</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -25,11 +25,10 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
     <!-- Waves Effect Css -->
     <link href="plugins/node-waves/waves.css" rel="stylesheet" />
 
-    <!-- JQuery DataTable Css -->
-    <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
-
     <!-- Animation Css -->
     <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+    <link href="plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
 
     <!-- Custom Css -->
     <link href="css/style.css" rel="stylesheet">
@@ -38,12 +37,12 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
     <link href="css/themes/all-themes.css" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-teal">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
-                <div class="spinner-layer pl-red">
+                <div class="spinner-layer pl-teal">
                     <div class="circle-clipper left">
                         <div class="circle"></div>
                     </div>
@@ -76,7 +75,7 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../../index.html">ADMINBSB - MATERIAL DESIGN</a>
+                <a class="navbar-brand" href="../../index.html">INVENTARIS BARANG</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -285,8 +284,8 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                     <img src="images/user.png" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin</div>
+                    <div class="email">admin@example.com</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
@@ -329,12 +328,6 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
 
                         </ul>
                     </li>
-                    <li>
-                        <ul class="ml-menu">
-
-                        </ul>
-                    </li>
-
                 </ul>
             </div>
             <!-- #Menu -->
@@ -359,7 +352,7 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
                     <ul class="demo-choose-skin">
-                        <li data-theme="red" class="active">
+                        <li data-theme="red">
                             <div class="red"></div>
                             <span>Red</span>
                         </li>
@@ -375,7 +368,7 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                             <div class="deep-purple"></div>
                             <span>Deep Purple</span>
                         </li>
-                        <li data-theme="indigo">
+                        <li data-theme="indigo" class="active">
                             <div class="indigo"></div>
                             <span>Indigo</span>
                         </li>
@@ -502,15 +495,18 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                 $page = $_GET['page'];
                 $aksi = $_GET['aksi'];
 
-                if ($page == "barang") {
-                    if ($aksi == "") { // JIKA AKSI == kosong, jalankan di bawah
+                if ($page == 'barang') {
+                    if ($aksi == "") {
                         include "pages/barang/barang.php";
                     }
-                    if ($aksi == "tambah") { // JIKA AKSI == tambah, jalankan di bawah
+                    if ($aksi == "tambah") {
                         include "pages/barang/tambah.php";
                     }
+                    if ($aksi == "ubah") {
+                        include "pages/barang/ubah.php";
+                    }
                 }
-                if ($page == "pelanggan") {
+                if ($page == 'pelanggan') {
                     if ($aksi == "") {
                         include "pages/pelanggan/pelanggan.php";
                     }
@@ -536,58 +532,17 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
     <!-- Waves Effect Plugin Js -->
     <script src="plugins/node-waves/waves.js"></script>
 
-    <!-- Custom Js -->
-    <script src="js/admin.js"></script>
-
     <!-- Jquery DataTable Plugin Js -->
     <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
-    <script src="plugins/jquery-datatable/jquery.dataTables.js"></script>
     <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
 
     <!-- Custom Js -->
     <script src="js/admin.js"></script>
     <script src="js/pages/tables/jquery-datatable.js"></script>
 
-
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
-    <!-- Code injected by live-server -->
-    <script type="text/javascript">
-        // <![CDATA[  <-- For SVG support
-        if ('WebSocket' in window) {
-            (function() {
-                function refreshCSS() {
-                    var sheets = [].slice.call(document.getElementsByTagName("link"));
-                    var head = document.getElementsByTagName("head")[0];
-                    for (var i = 0; i < sheets.length; ++i) {
-                        var elem = sheets[i];
-                        var parent = elem.parentElement || head;
-                        parent.removeChild(elem);
-                        var rel = elem.rel;
-                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                        }
-                        parent.appendChild(elem);
-                    }
-                }
-                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-                var address = protocol + window.location.host + window.location.pathname + '/ws';
-                var socket = new WebSocket(address);
-                socket.onmessage = function(msg) {
-                    if (msg.data == 'reload') window.location.reload();
-                    else if (msg.data == 'refreshcss') refreshCSS();
-                };
-                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                    console.log('Live reload enabled.');
-                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-                }
-            })();
-        } else {
-            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-        }
-        // ]]>
-    </script>
 </body>
 
 </html>
