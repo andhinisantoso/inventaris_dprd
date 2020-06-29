@@ -1,8 +1,10 @@
 <?php
-$kode = $_GET['id'];
+$kode2 = $_GET['id'];
 
-$sql = $koneksi->query("select * from tb_barang where kode_barcode = '$kode'");
+$sql = $koneksi->query("select * from tb_barang where kode_barcode = '$kode2'");
 $tampil = $sql->fetch_assoc();
+
+$satuan = $tampil['satuan'];
 ?>
 
 <div class="row clearfix">
@@ -35,28 +37,28 @@ $tampil = $sql->fetch_assoc();
                     <div class="form-group">
                         <div class="form-line">
                             <select name="satuan" class="form-control show-tick">
-                                <option value="pcs" <?php if ($tampil['satuan'] == 'pcs') {
+                                <option value="pcs" <?php if ($satuan == 'pcs') {
                                                         echo "selected";
                                                     } ?>>pcs</option>
-                                <option value="pack" <?php if ($tampil['satuan'] == 'pack') {
+                                <option value="pack" <?php if ($satuan == 'pack') {
                                                             echo "selected";
                                                         } ?>>pack</option>
-                                <option value="lusin" <?php if ($tampil['satuan'] == 'lusin') {
+                                <option value="lusin" <?php if ($satuan == 'lusin') {
                                                             echo "selected";
                                                         } ?>>lusin</option>
-                                <option value="botol" <?php if ($tampil['satuan'] == 'botol') {
+                                <option value="botol" <?php if ($satuan == 'botol') {
                                                             echo "selected";
                                                         } ?>>botol</option>
-                                <option value="rim" <?php if ($tampil['satuan'] == 'rim') {
+                                <option value="rim" <?php if ($satuan == 'rim') {
                                                         echo "selected";
                                                     } ?>>rim</option>
-                                <option value="kodi" <?php if ($tampil['satuan'] == 'kodi') {
+                                <option value="kodi" <?php if ($satuan == 'kodi') {
                                                             echo "selected";
                                                         } ?>>kodi</option>
-                                <option value="liter" <?php if ($tampil['satuan'] == 'liter') {
+                                <option value="liter" <?php if ($satuan == 'liter') {
                                                             echo "selected";
                                                         } ?>>liter</option>
-                                <option value="kilogram" <?php if ($tampil['satuan'] == 'kilogram') {
+                                <option value="kilogram" <?php if ($satuan == 'kilogram') {
                                                                 echo "selected";
                                                             } ?>>kilogram</option>
                             </select>
@@ -91,6 +93,7 @@ $tampil = $sql->fetch_assoc();
                 <?php
 
                 if (isset($_POST['simpan'])) {
+
                     $kode = $_POST['kode'];
                     $nama = $_POST['nama'];
                     $satuan = $_POST['satuan'];
@@ -98,12 +101,12 @@ $tampil = $sql->fetch_assoc();
                     $klien = $_POST['klien'];
                     $deskripsi = $_POST['deskripsi'];
 
-                    $sql = $koneksi->query("insert into tb_barang value('$kode', '$nama', '$satuan', '$stok', '$klien', '$deskripsi')");
+                    $sql2 = $koneksi->query("update tb_barang set nama_barang='$nama', satuan='$satuan', stok='$stok', kepemilikan='$klien', deskripsi='$deskripsi' where kode_barcode='$kode2'");
 
-                    if ($sql) {
+                    if ($sql2) {
                 ?>
                         <script type="text/javascript">
-                            alert("Data berhasil disimpan");
+                            alert("Data Berhasil Diubah");
                             window.location.href = "?page=barang";
                         </script>
                 <?php

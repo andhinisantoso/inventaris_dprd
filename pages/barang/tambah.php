@@ -81,7 +81,7 @@
                     if ($sql) {
                 ?>
                         <script type="text/javascript">
-                            alert("Data berhasil ditambahkan");
+                            alert("Data Berhasil Ditambahkan");
                             window.location.href = "?page=barang";
                         </script>
                 <?php
