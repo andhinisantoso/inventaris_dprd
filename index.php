@@ -318,9 +318,9 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                         </a>
                     </li>
                     <li>
-                        <a href="?page=pelanggan">
+                        <a href="?page=klien">
                             <i class="material-icons">supervisor_account</i>
-                            <span>Pelanggan</span>
+                            <span>Klien</span>
                         </a>
                     </li>
                     <li class="active">
@@ -509,9 +509,12 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                         include "pages/barang/hapus.php";
                     }
                 }
-                if ($page == 'pelanggan') {
+                if ($page == 'klien') {
                     if ($aksi == "") {
-                        include "pages/pelanggan/pelanggan.php";
+                        include "pages/klien/klien.php";
+                    }
+                    if ($aksi == "tambah") {
+                        include "pages/klien/tambah.php";
                     }
                 }
 
