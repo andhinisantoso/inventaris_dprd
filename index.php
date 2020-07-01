@@ -516,6 +516,12 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                     if ($aksi == "tambah") {
                         include "pages/klien/tambah.php";
                     }
+                    if ($aksi == "ubah") {
+                        include "pages/klien/ubah.php";
+                    }
+                    if ($aksi == "hapus") {
+                        include "pages/klien/hapus.php";
+                    }
                 }
 
                 ?>

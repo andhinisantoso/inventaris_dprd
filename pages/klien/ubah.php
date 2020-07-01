@@ -1,10 +1,9 @@
 <?php
 $kode2 = $_GET['id'];
 
-$sql = $koneksi->query("select * from tb_barang where kode_barcode = '$kode2'");
+$sql = $koneksi->query("select * from tb_klien where kode_klien = '$kode2'");
 $tampil = $sql->fetch_assoc();
 
-$satuan = $tampil['satuan'];
 $bagian = $tampil['bagian'];
 ?>
 
@@ -13,63 +12,24 @@ $bagian = $tampil['bagian'];
         <div class="card">
             <div class="header">
                 <h2>
-                    Ubah Barang
+                    Ubah Klien
                 </h2>
             </div>
 
             <div class="body">
                 <form method="POST">
 
-                    <label for="">Kode Barang</label>
+                    <label for="">Kode Klien</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="kode" value="<?php echo $tampil['kode_barcode'] ?>" />
+                            <input type="number" class="form-control" name="kode_klien" value="<?php echo $tampil['kode_klien'] ?>" />
                         </div>
                     </div>
 
-                    <label for="">Nama Barang</label>
+                    <label for="">Nama </label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="nama" value="<?php echo $tampil['nama_barang'] ?>" />
-                        </div>
-                    </div>
-
-                    <label for="">Satuan Barang</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <select name="satuan" class="form-control show-tick">
-                                <option value="pcs" <?php if ($satuan == 'pcs') {
-                                                        echo "selected";
-                                                    } ?>>pcs</option>
-                                <option value="pack" <?php if ($satuan == 'pack') {
-                                                            echo "selected";
-                                                        } ?>>pack</option>
-                                <option value="lusin" <?php if ($satuan == 'lusin') {
-                                                            echo "selected";
-                                                        } ?>>lusin</option>
-                                <option value="botol" <?php if ($satuan == 'botol') {
-                                                            echo "selected";
-                                                        } ?>>botol</option>
-                                <option value="rim" <?php if ($satuan == 'rim') {
-                                                        echo "selected";
-                                                    } ?>>rim</option>
-                                <option value="kodi" <?php if ($satuan == 'kodi') {
-                                                            echo "selected";
-                                                        } ?>>kodi</option>
-                                <option value="liter" <?php if ($satuan == 'liter') {
-                                                            echo "selected";
-                                                        } ?>>liter</option>
-                                <option value="kilogram" <?php if ($satuan == 'kilogram') {
-                                                                echo "selected";
-                                                            } ?>>kilogram</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <label for="">Stok</label>
-                    <div class="form-group">
-                        <div class="form-line">
-                            <input type="number" class="form-control" name="stok" value="<?php echo $tampil['stok'] ?>" />
+                            <input type="text" class="form-control" name="nama" value="<?php echo $tampil['nama'] ?>" />
                         </div>
                     </div>
 
@@ -90,6 +50,14 @@ $bagian = $tampil['bagian'];
                         </div>
                     </div>
 
+                    <label for="">Telepon</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="number" class="form-control" name="telepon" value="<?php echo $tampil['telepon'] ?>" />
+                        </div>
+                    </div>
+
+
                     <label for="">Deskripsi</label>
                     <div class="form-group">
                         <div class="form-line">
@@ -105,20 +73,19 @@ $bagian = $tampil['bagian'];
 
                 if (isset($_POST['simpan'])) {
 
-                    $kode = $_POST['kode'];
+                    $kode = $_POST['kode_klien'];
                     $nama = $_POST['nama'];
-                    $satuan = $_POST['satuan'];
-                    $stok = $_POST['stok'];
                     $bagian = $_POST['bagian'];
+                    $telepon = $_POST['telepon'];
                     $deskripsi = $_POST['deskripsi'];
 
-                    $sql2 = $koneksi->query("update tb_barang set nama_barang='$nama', satuan='$satuan', stok='$stok', bagian='$bagian', deskripsi='$deskripsi' where kode_barcode='$kode2'");
+                    $sql2 = $koneksi->query("update tb_klien set kode_klien='$kode', nama='$nama', bagian='$bagian', telepon='$telepon', deskripsi='$deskripsi' where kode_klien='$kode2'");
 
                     if ($sql2) {
                 ?>
                         <script type="text/javascript">
                             alert("Data Berhasil Diubah");
-                            window.location.href = "?page=barang";
+                            window.location.href = "?page=klien";
                         </script>
                 <?php
                     }
