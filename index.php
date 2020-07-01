@@ -323,6 +323,12 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                             <span>Klien</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="?page=pengguna">
+                            <i class="material-icons">person</i>
+                            <span>Pengguna</span>
+                        </a>
+                    </li>
                     <li class="active">
                         <ul class="ml-menu">
 
@@ -521,6 +527,20 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                     }
                     if ($aksi == "hapus") {
                         include "pages/klien/hapus.php";
+                    }
+                }
+                if ($page == 'pengguna') {
+                    if ($aksi == "") {
+                        include "pages/pengguna/pengguna.php";
+                    }
+                    if ($aksi == "tambah") {
+                        include "pages/pengguna/tambah.php";
+                    }
+                    if ($aksi == "ubah") {
+                        include "pages/pengguna/ubah.php";
+                    }
+                    if ($aksi == "hapus") {
+                        include "pages/pengguna/hapus.php";
                     }
                 }
 
