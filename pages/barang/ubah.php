@@ -5,6 +5,7 @@ $sql = $koneksi->query("select * from tb_barang where kode_barcode = '$kode2'");
 $tampil = $sql->fetch_assoc();
 
 $satuan = $tampil['satuan'];
+$bagian = $tampil['bagian'];
 ?>
 
 <div class="row clearfix">
@@ -72,10 +73,20 @@ $satuan = $tampil['satuan'];
                         </div>
                     </div>
 
-                    <label for="">Klien</label>
+                    <label for="">Bagian</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="klien" value="<?php echo $tampil['kepemilikan'] ?>" />
+                            <select name="bagian" class="form-control show-tick">
+                                <option value="umum" <?php if ($bagian == 'umum') {
+                                                            echo "selected";
+                                                        } ?>>umum</option>
+                                <option value="art" <?php if ($bagian == 'art') {
+                                                        echo "selected";
+                                                    } ?>>art</option>
+                                <option value="keuangan" <?php if ($bagian == 'keuangan') {
+                                                                echo "selected";
+                                                            } ?>>keuangan</option>
+                            </select>
                         </div>
                     </div>
 
@@ -98,10 +109,10 @@ $satuan = $tampil['satuan'];
                     $nama = $_POST['nama'];
                     $satuan = $_POST['satuan'];
                     $stok = $_POST['stok'];
-                    $klien = $_POST['klien'];
+                    $bagian = $_POST['bagian'];
                     $deskripsi = $_POST['deskripsi'];
 
-                    $sql2 = $koneksi->query("update tb_barang set nama_barang='$nama', satuan='$satuan', stok='$stok', kepemilikan='$klien', deskripsi='$deskripsi' where kode_barcode='$kode2'");
+                    $sql2 = $koneksi->query("update tb_barang set nama_barang='$nama', satuan='$satuan', stok='$stok', bagian='$bagian', deskripsi='$deskripsi' where kode_barcode='$kode2'");
 
                     if ($sql2) {
                 ?>

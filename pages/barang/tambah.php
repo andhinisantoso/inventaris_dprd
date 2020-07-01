@@ -48,10 +48,15 @@
                         </div>
                     </div>
 
-                    <label for="">Klien</label>
+                    <label for="">Bagian</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="klien" />
+                            <select name="bagian" class="form-control show-tick">
+                                <option value="">-- Pilih Bagian --</option>
+                                <option value="Umum">Umum</option>
+                                <option value="ART">ART</option>
+                                <option value="Keuangan">Keuangan</option>
+                            </select>
                         </div>
                     </div>
 
@@ -73,10 +78,10 @@
                     $nama = $_POST['nama'];
                     $satuan = $_POST['satuan'];
                     $stok = $_POST['stok'];
-                    $klien = $_POST['klien'];
+                    $bagian = $_POST['bagian'];
                     $deskripsi = $_POST['deskripsi'];
 
-                    $sql = $koneksi->query("insert into tb_barang value('$kode', '$nama', '$satuan', '$stok', '$klien', '$deskripsi')");
+                    $sql = $koneksi->query("insert into tb_barang value('$kode', '$nama', '$satuan', '$stok', '$bagian', '$deskripsi')");
 
                     if ($sql) {
                 ?>

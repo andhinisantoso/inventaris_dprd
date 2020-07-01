@@ -16,7 +16,7 @@
                                 <th>Nama Barang</th>
                                 <th>Satuan</th>
                                 <th>Stok</th>
-                                <th>Klien</th>
+                                <th>Bagian</th>
                                 <th>Deskripsi</th>
                                 <th>Aksi</th>
                             </tr>
@@ -35,7 +35,7 @@
                                     <td><?php echo $data['nama_barang']; ?></td>
                                     <td><?php echo $data['satuan']; ?></td>
                                     <td><?php echo $data['stok']; ?></td>
-                                    <td><?php echo $data['kepemilikan']; ?></td>
+                                    <td><?php echo $data['bagian']; ?></td>
                                     <td><?php echo $data['deskripsi']; ?></td>
                                     <td>
                                         <a href="?page=barang&aksi=ubah&id=<?php echo $data['kode_barcode'] ?>" class="btn btn-success">Ubah</a>

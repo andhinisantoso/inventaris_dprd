@@ -13,7 +13,7 @@
                     <label for="">Kode Klien</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="kode_klien" />
+                            <input type="number" class="form-control" name="kode_klien" />
                         </div>
                     </div>
 
@@ -27,11 +27,11 @@
                     <label for="">Bagian</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <select name="satuan" class="form-control show-tick">
+                            <select name="bagian" class="form-control show-tick">
                                 <option value="">-- Pilih Bagian --</option>
-                                <option value="Umum">Umum</option>
-                                <option value="Rumah Tangga">Rumah Tangga</option>
-                                <option value="Keuangan">Keuangan</option>
+                                <option value="umum">umum</option>
+                                <option value="art">art</option>
+                                <option value="keuangan">keuangan</option>
                             </select>
                         </div>
                     </div>
@@ -57,20 +57,19 @@
                 <?php
 
                 if (isset($_POST['simpan'])) {
-                    $kode = $_POST['kode'];
+                    $kode = $_POST['kode_klien'];
                     $nama = $_POST['nama'];
-                    $satuan = $_POST['satuan'];
-                    $stok = $_POST['stok'];
-                    $klien = $_POST['klien'];
+                    $bagian = $_POST['bagian'];
+                    $telepon = $_POST['telepon'];
                     $deskripsi = $_POST['deskripsi'];
 
-                    $sql = $koneksi->query("insert into tb_barang value('$kode', '$nama', '$satuan', '$stok', '$klien', '$deskripsi')");
+                    $sql = $koneksi->query("insert into tb_klien value('$kode', '$nama', '$bagian', '$telepon', '$deskripsi')");
 
                     if ($sql) {
                 ?>
                         <script type="text/javascript">
                             alert("Data Berhasil Ditambahkan");
-                            window.location.href = "?page=barang";
+                            window.location.href = "?page=klien";
                         </script>
                 <?php
                     }
