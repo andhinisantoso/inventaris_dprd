@@ -1,6 +1,10 @@
 <?php
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 
+// session_start();
+
+include "kodepb.php";
+
 $koneksi = new mysqli("localhost", "root", "", "inventaris");
 
 ?>
@@ -329,6 +333,12 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                             <span>Pengguna</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="?page=pengambilan&kodepb=<?= $kode;?>">
+                            <i class="material-icons">unarchive</i>
+                            <span>Pengambilan</span>
+                        </a>
+                    </li>
                     <li class="active">
                         <ul class="ml-menu">
 
@@ -339,12 +349,12 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
             <!-- #Menu -->
             <!-- Footer -->
             <div class="legal">
-                <div class="copyright">
+                <!-- <div class="copyright">
                     &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.5
-                </div>
+                </div> -->
             </div>
             <!-- #Footer -->
         </aside>
@@ -532,6 +542,20 @@ $koneksi = new mysqli("localhost", "root", "", "inventaris");
                 if ($page == 'pengguna') {
                     if ($aksi == "") {
                         include "pages/pengguna/pengguna.php";
+                    }
+                    if ($aksi == "tambah") {
+                        include "pages/pengguna/tambah.php";
+                    }
+                    if ($aksi == "ubah") {
+                        include "pages/pengguna/ubah.php";
+                    }
+                    if ($aksi == "hapus") {
+                        include "pages/pengguna/hapus.php";
+                    }
+                }
+                if ($page == 'pengambilan') {
+                    if ($aksi == "") {
+                        include "pages/pengambilan/pengambilan.php";
                     }
                     if ($aksi == "tambah") {
                         include "pages/pengguna/tambah.php";

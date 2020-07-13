@@ -1,11 +1,23 @@
+<?php
 
+    session_start();
+
+    error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
+
+    $koneksi = new mysqli("localhost", "root", "", "inventaris");
+
+    // if ($_SESSION['admin'] || $_SESSION['staff']) {
+    //     header("location:index.php");
+    // } else {
+
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
+    <title>login</title>
     <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -29,7 +41,7 @@
 <body class="login-page">
     <div class="login-box">
         <div class="logo">
-            <a href="javascript:void(0);"><b>SIGN IN</b></a>
+            <a href="javascript:void(0);"><b>LOGIN</b></a>
             <small>Website Inventaris Sekretariat DPRD Kota Medan</small>
         </div>
         <div class="card">
@@ -52,20 +64,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-8 p-t-5">
-                            <input type="checkbox" name="rememberme" id="rememberme" class="filled-in chk-col-pink">
-                            <label for="rememberme">Remember Me</label>
-                        </div>
                         <div class="col-xs-4">
-                            <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
-                        </div>
-                    </div>
-                    <div class="row m-t-15 m-b--20">
-                        <div class="col-xs-6">
-                            <a href="sign-up.html">Register Now!</a>
-                        </div>
-                        <div class="col-xs-6 align-right">
-                            <a href="forgot-password.html">Forgot Password?</a>
+                            <input type="submit" name="login" value="login" class="btn btn-block bg-pink waves-effect">
                         </div>
                     </div>
                 </form>
@@ -91,3 +91,38 @@
 </body>
 
 </html>
+
+<?php
+
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+
+            $login = $_POST['login'];
+
+            if ($login) {
+                $sql = $koneksi->query("select * from tb_pengguna where username='$username' && password='$password'");
+
+                $valid = $sql->num_rows;
+
+                $data = $sql->fetch_assoc();
+
+                if ($valid >= 1) {
+
+                    session_start();
+
+                    if ($data["level"] == "admin") {
+                        $_SESSION['admin'] = $data[id];
+                        echo "berhasil";
+                        // header("location:index.php");
+                    
+                    }
+                    // else if ($data['level'] == "staff") {
+                    //     $_SESSION['staff'] = $data[id];
+                    //     header("location:index.php");
+                    // } 
+                }else {
+                    echo "gagal";
+                }
+                
+            }
+?>
